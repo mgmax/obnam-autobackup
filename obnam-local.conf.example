@@ -1,0 +1,41 @@
+###############################################################################
+# Backup paths and other important stuff [TM]
+###############################################################################
+
+# Backup from (comma separated)
+root = /home/user
+
+# to (SFTP path, if strange errors occur then please check that you can really write there)
+repository = sftp://foo@example.com/~/backup/mycomputer
+
+
+# exclude regexp: (comma-separated, newline after comma allowed, comment lines must not start with whitespace)
+
+exclude = /nobackup/, /temp/,
+# cache and trash locations
+          /.cache/,  /.thumbnails/, /.local/share/Trash/, /.Trash-[0-9]+/,
+# pidgin logs
+         /.purple/logs/,
+# VCS
+     /\.git/, /\.svn/
+
+# ignore browser caches etc. which are tagged by the cachedir standard
+exclude-caches = True
+
+# load exclude list from file
+# exclude-from = 
+
+# stay on one filesystem, i.e. skip mountpoints below the directories given in root= ?
+# one-file-system = False
+
+
+# When should old backups be discarded? (by `obnam forget`)
+keep = 30d,12w
+# this means:
+# keep last backup of each of the last 30 days
+# keep last backup of each of the last 12 weeks
+# delete anything else (!)
+
+# GPG key for encryption (you can generate one by running TODO ...)
+encrypt-with = ABCDEF123
+
