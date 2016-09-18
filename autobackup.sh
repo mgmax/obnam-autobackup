@@ -5,8 +5,10 @@ set -x
 # exit on SIGINT (Ctrl-C in shell)
 trap 'exit 1' INT
 
-test -f obnam-local.conf || { echo "please copy obnam-local.conf.example to obnam-local.conf and adapt it to your needs."; exit 1; }
 cd $(dirname $0)
+
+test -f obnam-local.conf || { echo "please copy obnam-local.conf.example to obnam-local.conf and adapt it to your needs."; exit 1; }
+
 OBNAM="nice -n20 ionice -c3 obnam --config obnam-defaults.conf --config obnam-local.conf"
 echo "last complete backup: $(test -f last_successful_backup && cat last_successful_backup || echo NEVER)."
 while true; do
